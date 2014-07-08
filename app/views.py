@@ -1,30 +1,34 @@
 __author__ = 'pszemus'
 
 from app import app
-from flask import render_template, flash, redirect, request
-import sqlite3
-from datebase_try import try_it
+from flask import render_template, redirect, request, url_for
+from forms import add_post
+from datebase import db, Post
 
-
-conn = sqlite3.connect("datebase")
-cursor = conn.cursor()
-
-date = cursor.execute("SELECT * FROM post").fetchall()
 
 @app.route('/')
 @app.route('/index')
 def index():
+    date = Post.query.all()
     return render_template("index.html",
-        date=date)
+                           date=date,
+                           title = "Przemus")
+
+@app.route('/posts', defaults = {'foo': None})
+@app.route('/posts/<foo>')
+def hello_login(foo = None):
+    x=Post.query.filter_by(id=int(foo))
+    return x.all()[0].title
 
 
-@app.route('/form')
-def my_form():
-    return render_template("my-form.html")
+@app.route('/add', methods=['GET', 'POST'])
+def add():
+    form = add_post(request.form)
+    if request.method == 'POST' and form.validate():
+        print form.author.data, form.post.data, form.title.data, form
+        try4 = Post(form.author.data, form.title.data, form.post.data)
+        db.session.add(try4)
+        db.session.commit()
 
-@app.route('/form', methods=['POST', 'GET'])
-def my_form_post():
-    text = request.form['text']
-    try_it(text)
-    return render_template("my-form.html",
-        text = text)
+        return redirect(url_for('index'))
+    return render_template('add.html', form=form)

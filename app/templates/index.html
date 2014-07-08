@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
+    <h1>{{title}} - microblog</h1>
     {% for item in date %}
-        <h2>{% for item1 in item %}
-            {{item1}}
-        {% endfor %}</h2>
+        <h2>{{item.author}} - {{item.title}}</h2>
+        <h3>{{item.id}}</h3>
+        <h3>{{item.post}}</h3>
     {% endfor %}
 {% endblock %}

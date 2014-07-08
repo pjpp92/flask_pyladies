@@ -1,0 +1,10 @@
+{% from "add_help.html" import render_field %}
+<form method=post action="/add">
+  <dl>
+    {{ render_field(form.author) }}
+    {{ render_field(form.post) }}
+    {{ render_field(form.title) }}
+    {{ render_field(form.accept_tos) }}
+  </dl>
+  <p><input type=submit value=Register>
+</form>
