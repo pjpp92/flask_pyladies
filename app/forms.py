@@ -8,4 +8,4 @@ class add_post(Form):
 
 class add_comment(Form):
     comment = TextField('comment', [validators.Length(min=1, max=250)])
-    accept_reg = BooleanField('I accept the reg', [validators.Required()])
+    accept_reg = BooleanField('I accept the reg')

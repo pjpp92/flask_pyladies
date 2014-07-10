@@ -1,8 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>{{title}} - microblog</h1>
     {% for item in date %}
-        <h2>{{item.author}} - {{item.title}}</h2>
+        <h2><a href="/posts/{{item.title}}">{{item.author}} - {{item.title}}</h2></a>
         <h3>{{item.id}}</h3>
         <h3>{{item.post}}</h3>
     {% endfor %}

@@ -2,8 +2,8 @@
 <html>
   <head>
     <style type=text/css>{{ get_resource_as_string('static/styles.css') }}</style>
-    {% if title %}
-    <title>{{title}} - microblog</title>
+    {% if blog_title %}
+    <title>{{ blog_title }} - microblog</title>
     {% else %}
     <title>microblog</title>
     {% endif %}
@@ -11,7 +11,8 @@
   </head>
   <body>
     <div>Microblog: <a href="/index">Home</a></div>
-    <hr>
+    <h1>{{ blog_title }} - microblog</h1>
+
     {% with messages = get_flashed_messages() %}
     {% if messages %}
     <ul>

@@ -8,10 +8,11 @@ db = SQLAlchemy(app)
 
 
 class Post(db.Model):
+    __tablename__ = 'Post'
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(80), unique=True)
-    post = db.Column(db.String(120), unique=True)
-    author = db.Column(db.String(120), unique=True)
+    title = db.Column(db.String(50), unique=True)
+    post = db.Column(db.String(5000), unique=True)
+    author = db.Column(db.String(50))
 
 
 
@@ -19,15 +20,13 @@ class Post(db.Model):
         self.author = author
         self.title = title
         self.post = post
-    '''
-    def __repr__(self):
-        return '<id: %r, author: %r, post: %r, title: %r>' % (self.id, self.author, self.post, self.title)
-    '''
 
-class comment(db.Model):
+
+class Comment(db.Model):
+    __tablename__ = 'Comment'
     id = db.Column(db.Integer, primary_key=True)
-    post_title = db.Column(db.String, ForeignKey("Post.post"))
-    comment = db.Column(db.String(80), unique=True)
+    post_title = db.Column(db.String, ForeignKey('Post.id'))
+    comment = db.Column(db.String(500))
 
     def __init__(self, post_title, comment):
         self.post_title = post_title

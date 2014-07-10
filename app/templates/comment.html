@@ -1,9 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-
-</body>
-</html>
+{% from "add_help.html" import render_field %}
+{% extends "base.html" %}
+{% block content %}
+    <h3>{{ post_author }} - {{ post_title }}</h3>
+    {% for item in comments %}
+        <h5>{{item.comment}}</h5>
+    {% endfor %}
+    <form method=post action="/posts/{{post_title}}">
+      <dl>
+        {{ render_field(form.comment) }}
+        {{ render_field(form.accept_reg) }}
+      </dl>
+      <p><input type=submit value=Register>
+    </form>
+{% endblock %}
