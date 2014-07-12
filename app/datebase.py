@@ -2,8 +2,11 @@ from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
 from sqlalchemy import Table, Column, Integer, ForeignKey
 
+ROLE_USER = 0
+ROLE_ADMIN = 1
+
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 db = SQLAlchemy(app)
 
 
@@ -13,7 +16,6 @@ class Post(db.Model):
     title = db.Column(db.String(50), unique=True)
     post = db.Column(db.String(5000), unique=True)
     author = db.Column(db.String(50))
-
 
 
     def __init__(self, author, title, post):
@@ -31,3 +33,4 @@ class Comment(db.Model):
     def __init__(self, post_title, comment):
         self.post_title = post_title
         self.comment = comment
+

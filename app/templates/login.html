@@ -1,22 +1,20 @@
-<!-- extend base layout -->
 {% extends "base.html" %}
-
 {% block content %}
 
-<h1>Sign In</h1>
-<form action="" method="post" name="login">
-    {{form.hidden_tag()}}
-    <p>
-        Please enter your OpenID, or select one of the providers below:<br>
-        {{form.openid(size=80)}}
-        {% for error in form.errors.openid %}
-        <span style="color: red;">[{{error}}]</span>
-        {% endfor %}<br>
-        |{% for pr in providers %}
+<h2>Please login</h2>
+{% if error %}
+        <p>Error: {{ error }}</p>
+{% endif %}
+<br>
+<form action="" method="post">
+    <dl>
+        <dt>Username:
+            <dd><input type="text" name="username" value="{{request.form.username }}">
+            <dt>Password:
+        <dd><input type="password" name="password">
+        <dl>
+            <p><input type="submit" value="login"></p>
 
-        {% endfor %}
-    </p>
-    <p>{{form.remember_me}} Remember Me</p>
-    <p><input type="submit" value="Sign In"></p>
 </form>
+
 {% endblock %}

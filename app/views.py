@@ -1,11 +1,22 @@
 __author__ = 'pszemus'
 
 from app import app
-from flask import render_template, redirect, request, url_for
+from flask import render_template, redirect, request, url_for, session, flash
 from forms import add_post, add_comment
 from datebase import db, Post, Comment
+from functools import wraps
 
 blog_title = "Przemus"
+
+def login_required(test):
+    @wraps(test)
+    def wrap(*args, **kwargs):
+        if 'logged_in' in session:
+            return test(*args, **kwargs)
+        else:
+            flash('You have to login first')
+            return redirect(url_for('login'))
+    return wrap
 
 @app.route('/')
 @app.route('/index')
@@ -13,12 +24,12 @@ def index():
     date = Post.query.all()
     return render_template("index.html",
                            date=date,
-                           title = "Przemus")
+                           blog_title = blog_title)
 
 
 @app.route('/posts', defaults = {'foo': None})
 @app.route('/posts/<foo>', methods=['GET', 'POST'])
-def hello_login(foo = None):
+def comment(foo = None):
     post_title = Post.query.filter_by(title=str(foo)).all()[0].title
     post_author = Post.query.filter_by(title=str(foo)).all()[0].author
     post = Post.query.filter_by(title=str(foo)).all()[0].post
@@ -32,8 +43,10 @@ def hello_login(foo = None):
         db.session.commit()
     return render_template("comment.html",
                            form=form,
+                           blog_title = blog_title,
                            post_title=post_title,
                            post_author=post_author,
+                           post = post,
                            comments=comments)
 
 
@@ -47,3 +60,45 @@ def add():
         db.session.commit()
         return redirect(url_for('index'))
     return render_template('add.html', form=form)
+
+@app.route('/admin')
+@login_required
+def admin():
+    date = Post.query.all()
+    return render_template('admin.html', date=date)
+
+
+'''
+@app.route('/admin/posts', defaults = {'foo': None})
+@app.route('/admin/posts/<foo>')
+@login_required
+def edid_post(foo):
+    post = Post.query.filter_by(title=str(foo)).all()[0]
+    return
+'''
+@app.route('/logout')
+def logout():
+    flash("You're logout")
+    session.pop('logged_in', None)
+    return redirect(url_for('index'))
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    error = None
+    if request.method == 'POST':
+        if request.form['username'] != 'admin' or request.form['password'] != 'admin':
+            error = 'Invalid user name or password'
+        else:
+            session['logged_in'] = True
+            return redirect(url_for('admin'))
+    return render_template('login.html', error = error)
+
+def login_required(test):
+    @wraps(test)
+    def wrap(*args, **kwargs):
+        if 'logged_in' in session:
+            return test(*args, **kwargs)
+        else:
+            flash('You have to login first')
+            redirect(url_for('login'))
+    return wrap
