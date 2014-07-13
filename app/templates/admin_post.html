@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="second"> {{post.author}} - {{post.title}}</div>
+        <form method=post>
+            <div class="delete"> <input type="submit" value="delete" name="delete_post"> </div>
+        </form>
+    {% for item in comments %}
+        <div class="comment">{{item.comment}}</div>
+    {% endfor %}
+{% endblock %}

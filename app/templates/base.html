@@ -10,8 +10,8 @@
 
   </head>
   <body>
-    <div>Microblog: <a href="/index">Home</a> | <a href="/login">Login</a></div>
-    <h1>{{ blog_title }} - microblog</h1>
+    <footer>Microblog: <a href="/index">Home</a> | <a href="/login">Login</a></footer>
+    <p>{{ blog_title }} - microblog</p>
 
     {% with messages = get_flashed_messages() %}
     {% if messages %}

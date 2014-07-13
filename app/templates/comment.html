@@ -4,7 +4,7 @@
     <h3>{{ post_author }} - {{ post_title }}</h3>
         <h3>{{ post }}</h3>
     {% for item in comments %}
-        <h5>{{item.comment}}</h5>
+        <div class="comment">{{item.comment}}</div>
     {% endfor %}
     <form method=post action="/posts/{{post_title}}">
       <dl>

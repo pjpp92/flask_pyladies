@@ -2,26 +2,48 @@
     color: #efd;
     background: #453;
     padding: 0 5em;
-    margin: 0
+
     }
 
-    h1 {
-    padding: 2em 1em;
+    footer{
+    margin-top: 10px;
+    }
+
+    p {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 50px;
+    padding-left: 50px;
+    margin: 1px;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
     background: #675
     }
 
-    h2 {
+    post{
     color:#bf8;
+    margin-left: 500px;
+    margin-right: 500px;
+    background-color: red;
+    }
+
+    .second{
     border-top: 1px dotted #fff;
-    margin-top: 2em
+    margin-top: 1.5em;
+    font-size: 30px;
+    font-weight: bold;
+    margi
     }
 
-    h3 {
+
+
+    .third {
     color: #d9ffc1;
-
+    margin: 1em;
     }
 
-    h5 {
+    .comment {
     border-top: 1px dotted #fff;
     margin-top: 2em
     }
@@ -30,6 +52,9 @@
     color: #efd;
     }
 
+    .delete {
+    float:right;
+    }
 
 
 

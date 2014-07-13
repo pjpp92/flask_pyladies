@@ -65,17 +65,26 @@ def add():
 @login_required
 def admin():
     date = Post.query.all()
-    return render_template('admin.html', date=date)
+    return render_template('admin.html', date=date,
+                           blog_title=blog_title)
 
 
-'''
 @app.route('/admin/posts', defaults = {'foo': None})
-@app.route('/admin/posts/<foo>')
+@app.route('/admin/posts/<foo>', methods=['GET', 'POST'])
 @login_required
-def edid_post(foo):
+def edit_post(foo):
     post = Post.query.filter_by(title=str(foo)).all()[0]
-    return
-'''
+    comments = Comment.query.filter_by(post_title=post.title)
+    if request.method == 'POST':
+        print 'delete'
+        bar = Post.query.filter_by(title=str(foo)).first()
+        print bar.title
+        db.session.delete(bar)
+        db.session.commit()
+        return redirect(url_for('admin'))
+    return render_template('admin_post.html', post=post, comments = comments,
+                           blog_title=blog_title)
+
 @app.route('/logout')
 def logout():
     flash("You're logout")
@@ -91,7 +100,8 @@ def login():
         else:
             session['logged_in'] = True
             return redirect(url_for('admin'))
-    return render_template('login.html', error = error)
+    return render_template('login.html', error=error,
+                           blog_title=blog_title)
 
 def login_required(test):
     @wraps(test)

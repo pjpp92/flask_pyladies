@@ -3,6 +3,6 @@
 {% block content %}
         Hello Przemus! <a href="/logout">logout</a>
     {% for item in date %}
-    <h2>{{item.author}} - {{item.title}} </h2>
+        <h2><a href="admin/posts/{{ item.title }}"> {{item.author}} - {{item.title}}</a></h2>
     {% endfor %}
 {% endblock %}

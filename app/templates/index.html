@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
     {% for item in date %}
-        <h2><a href="/posts/{{item.title}}"> {{item.author}} - {{item.title}} </a></h2>
-        <h3>{{item.id}}</h3>
-        <h3>{{item.post}}</h3>
+
+        <div class="second"><a href="/posts/{{item.title}}"> {{item.author}} - {{item.title}} </a></div>
+        <div class="third">{{item.id}}</div>
+        <div class="third">{{item.post}}</div>
+
     {% endfor %}
 {% endblock %}
