@@ -53,7 +53,7 @@
       <file leaf-file-name="styles.css" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/static/styles.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="18" selection-start="382" selection-end="382" vertical-scroll-proportion="0.29944548" vertical-offset="288" max-vertical-offset="1188">
+            <state line="30" column="12" selection-start="432" selection-end="432" vertical-scroll-proportion="0.6321627" vertical-offset="198" max-vertical-offset="1188">
               <folding />
             </state>
           </provider>
@@ -153,8 +153,8 @@
         <option value="$PROJECT_DIR$/app/templates/admin_post.html" />
         <option value="$PROJECT_DIR$/app/views.py" />
         <option value="$PROJECT_DIR$/app/templates/base.html" />
-        <option value="$PROJECT_DIR$/app/static/styles.css" />
         <option value="$PROJECT_DIR$/app/templates/index.html" />
+        <option value="$PROJECT_DIR$/app/static/styles.css" />
       </list>
     </option>
   </component>
@@ -831,7 +831,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/static/styles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="18" selection-start="382" selection-end="382" vertical-scroll-proportion="0.29944548" vertical-offset="288" max-vertical-offset="1188">
+        <state line="30" column="12" selection-start="432" selection-end="432" vertical-scroll-proportion="0.6321627" vertical-offset="198" max-vertical-offset="1188">
           <folding />
         </state>
       </provider>
