@@ -59,7 +59,7 @@ def add():
         db.session.add(try4)
         db.session.commit()
         return redirect(url_for('index'))
-    return render_template('add.html', form=form)
+    return render_template('add.html', form=form, blog_title=blog_title)
 
 @app.route('/admin')
 @login_required

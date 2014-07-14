@@ -1,10 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
 {% from "add_help.html" import render_field %}
 <form method=post action="/add">
   <dl>
-    {{ render_field(form.author) }}
-    {{ render_field(form.post) }}
-    {{ render_field(form.title) }}
-    {{ render_field(form.accept_tos) }}
+    <div class="third>">{{ render_field(form.author) }}</div>
+    <div class="third>">{{ render_field(form.post) }}</div>
+    <div class="third>">{{ render_field(form.title) }}</div>
   </dl>
-  <p><input type=submit value=Register>
+  <div class="third"> <input type=submit value=Register></div>
 </form>
+{% endblock %}

@@ -6,7 +6,7 @@
         </div>
     {% for item in comments %}
         <div class="comment">{{item.comment}}</div>
-            <input type="submit" value="delete" name="{{item.comment}}">
+            <div class="third"><input type="submit" value="delete" name="{{item.comment}}"></div>
     {% endfor %}
         </form>
 {% endblock %}
