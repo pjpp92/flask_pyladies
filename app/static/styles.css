@@ -9,7 +9,7 @@
     margin-top: 10px;
     }
 
-    p {
+    .title {
     padding-top: 50px;
     padding-bottom: 50px;
     padding-right: 50px;
@@ -25,27 +25,27 @@
     color:#bf8;
     margin-left: 100px;
     margin-right: 100px;
-
     }
 
     .second{
+    color: #efd;
     border-top: 1px dotted #fff;
     margin-top: 1.5em;
+    margin-bottom: 0.5em;
     font-size: 30px;
     font-weight: bold;
-    margi
     }
 
-
-
-    third {
+    .third {
     color: #d9ffc1;
-    margin: 1em;
+    font-size: 19px;
     }
 
     .comment {
+    color: #d9ffc1;
+    font-size: 16px;
+    margin-top: 10px;
     border-top: 1px dotted #fff;
-    margin-top: 2em
     }
 
     a{
@@ -53,7 +53,7 @@
     }
 
     .delete {
-    float:right;
+    text-align: right;
     }
 
 

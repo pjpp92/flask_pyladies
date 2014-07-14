@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="second"> {{post.author}} - {{post.title}}</div>
+    <div class="second"> {{post.author}} - {{post.title}}
         <form method=post>
-            <div class="delete"> <input type="submit" value="delete" name="delete_post"> </div>
-        </form>
+            <input type="submit" value="delete" name="delete_post">
+        </div>
     {% for item in comments %}
         <div class="comment">{{item.comment}}</div>
+            <input type="submit" value="delete" name="{{item.comment}}">
     {% endfor %}
+        </form>
 {% endblock %}

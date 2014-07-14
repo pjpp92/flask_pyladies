@@ -76,13 +76,22 @@ def edit_post(foo):
     post = Post.query.filter_by(title=str(foo)).all()[0]
     comments = Comment.query.filter_by(post_title=post.title)
     if request.method == 'POST':
-        print 'delete'
-        bar = Post.query.filter_by(title=str(foo)).first()
-        print bar.title
-        db.session.delete(bar)
-        db.session.commit()
-        return redirect(url_for('admin'))
-    return render_template('admin_post.html', post=post, comments = comments,
+        if request.form.get('delete_post', None) == "delete":
+
+            bar = Post.query.filter_by(title=str(foo)).first()
+            piwo = Comment.query.filter_by(post_title=str(foo))
+            for item in piwo:
+                db.session.delete(item)
+            db.session.delete(bar)
+            db.session.commit()
+            return redirect(url_for('admin'))
+
+        else:
+            for item in comments:
+                if request.form.get(item.comment, None) == "delete":
+                    db.session.delete(item)
+                    db.session.commit()
+    return render_template('admin_post.html', post=post, comments=comments,
                            blog_title=blog_title)
 
 @app.route('/logout')
@@ -103,12 +112,3 @@ def login():
     return render_template('login.html', error=error,
                            blog_title=blog_title)
 
-def login_required(test):
-    @wraps(test)
-    def wrap(*args, **kwargs):
-        if 'logged_in' in session:
-            return test(*args, **kwargs)
-        else:
-            flash('You have to login first')
-            redirect(url_for('login'))
-    return wrap

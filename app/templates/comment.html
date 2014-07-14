@@ -1,16 +1,18 @@
 {% from "add_help.html" import render_field %}
 {% extends "base.html" %}
 {% block content %}
-    <h3>{{ post_author }} - {{ post_title }}</h3>
-        <h3>{{ post }}</h3>
-    {% for item in comments %}
-        <div class="comment">{{item.comment}}</div>
-    {% endfor %}
+    <div class="second"> {{ post_author }} - {{ post_title }}</div>
+        <div class="third">{{ post }}</div>
+    <div class="comment">
     <form method=post action="/posts/{{post_title}}">
       <dl>
         {{ render_field(form.comment) }}
         {{ render_field(form.accept_reg) }}
       </dl>
       <p><input type=submit value=Register>
-    </form>
+    </form></div>
+
+    {% for item in comments %}
+        <div class="comment">{{item.comment}}</div>
+    {% endfor %}
 {% endblock %}

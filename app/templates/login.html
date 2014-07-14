@@ -1,20 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
-
-<h2>Please login</h2>
+<div class="second">Please login</div>
+<div class="third">
 {% if error %}
         <p>Error: {{ error }}</p>
 {% endif %}
-<br>
+</div>
+
 <form action="" method="post">
-    <dl>
-        <dt>Username:
-            <dd><input type="text" name="username" value="{{request.form.username }}">
-            <dt>Password:
-        <dd><input type="password" name="password">
-        <dl>
-            <p><input type="submit" value="login"></p>
+    <div class="third">Username:</div>
+            <div class="third"><input type="text" name="username" value="{{request.form.username }}"></div>
+           <div class="third"> Password:</div>
+        <div class="third"><input type="password" name="password"></div>
 
+            <div class="third"><input type="submit" value="login"></div>
 </form>
-
 {% endblock %}

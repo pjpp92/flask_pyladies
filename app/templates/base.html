@@ -11,13 +11,13 @@
   </head>
   <body>
     <footer>Microblog: <a href="/index">Home</a> | <a href="/login">Login</a></footer>
-    <p>{{ blog_title }} - microblog</p>
+    <p class="title">{{ blog_title }} - microblog</p>
 
     {% with messages = get_flashed_messages() %}
     {% if messages %}
     <ul>
     {% for message in messages %}
-        <li>{{ message }} </li>
+        <div><li>{{ message }} </li></div>
     {% endfor %}
     </ul>
     {% endif %}

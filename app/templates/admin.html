@@ -1,8 +1,8 @@
 {% from "add_help.html" import render_field %}
 {% extends "base.html" %}
 {% block content %}
-        Hello Przemus! <a href="/logout">logout</a>
+        <div class="third"> Hello Przemus! <div class="delete"><a href="/logout">logout</a></div></div>
     {% for item in date %}
-        <h2><a href="admin/posts/{{ item.title }}"> {{item.author}} - {{item.title}}</a></h2>
+        <div class="second"><a href="admin/posts/{{ item.title }}"> {{item.author}} - {{item.title}}</a></div>
     {% endfor %}
 {% endblock %}
